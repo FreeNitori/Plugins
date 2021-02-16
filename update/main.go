@@ -23,7 +23,7 @@ func Setup() interface{} {
 			}
 
 			context.SendMessage("Compiling...")
-			command := exec.Command("/bin/sh", "-c", "make && make plugins")
+			command := exec.Command("/bin/sh", "-c", "make && cd plugins && make")
 			var output bytes.Buffer
 			command.Stdout = &output
 			command.Stderr = &output
