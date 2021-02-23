@@ -1,8 +1,12 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
+git.randomchars.net/FreeNitori/EmbedUtil v1.0.0 h1:EVJAigHC+1af3ncqRhzhdkypWmnbZlHCMsWMtxWAh1I=
+git.randomchars.net/FreeNitori/EmbedUtil v1.0.0/go.mod h1:kZj3AXs1ozTGsziMu2GaUJv2KHnStOeqlDUAPVPfkY8=
 git.randomchars.net/FreeNitori/FreeNitori v1.10.7 h1:tWYYvN6GhKh8dMUGxx8m59/XK8MSVJyY/LRB3wXOG4Y=
 git.randomchars.net/FreeNitori/FreeNitori v1.10.7/go.mod h1:/vXHTf+AJ0LVCkP7YOoOYWYM+3pDoTcXl4DjLtKWB44=
 git.randomchars.net/FreeNitori/FreeNitori v1.10.9 h1:Y44sdTJnQGmAWY/p5+KLxMpjm1uSAtfU6RkrjxESyu8=
 git.randomchars.net/FreeNitori/FreeNitori v1.10.9/go.mod h1:/vXHTf+AJ0LVCkP7YOoOYWYM+3pDoTcXl4DjLtKWB44=
+git.randomchars.net/FreeNitori/ImageFetch v1.0.1/go.mod h1:AmR8sGi9pVdpkmPYG10dJ9HvRlmJJozPguEVvNwRJw8=
+git.randomchars.net/FreeNitori/ImageFetch v1.1.1/go.mod h1:AmR8sGi9pVdpkmPYG10dJ9HvRlmJJozPguEVvNwRJw8=
 github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/DataDog/zstd v1.4.1 h1:3oxKN3wbHibqx897utPC2LTQU4J+IHWWJO+glkAkpFM=
@@ -109,6 +113,8 @@ github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible/go.mod h1:ZQnN8lSECae
 github.com/lestrrat-go/strftime v1.0.4/go.mod h1:E1nN3pCbtMSu1yjSVeyuRFVm/U0xoR76fd03sz+Qz4g=
 github.com/lxn/walk v0.0.0-20210112085537-c389da54e794/go.mod h1:E23UucZGqpuUANJooIbHWCufXvOcT6E7Stq81gU+CSQ=
 github.com/lxn/win v0.0.0-20201111105847-2a20daff6a55/go.mod h1:KxxjdtRkfNoYDCUP5ryK7XJJNTnpC8atvtmTheChOtk=
+github.com/magefile/mage v1.10.0 h1:3HiXzCUY12kh9bIuyXShaVe529fJfyqoVM42o/uom2g=
+github.com/magefile/mage v1.10.0/go.mod h1:z5UZb/iS3GoOSn0JgWuiw7dxlurVYTu+/jHXqQg881A=
 github.com/magiconair/properties v1.8.0/go.mod h1:PppfXfuXeibc/6YijjN8zIbojt8czPbwD3XqdrwzmxQ=
 github.com/mattn/go-colorable v0.1.8/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope9wVRipJSqc=
 github.com/mattn/go-isatty v0.0.9/go.mod h1:YNRxwqDuOph6SZLI9vUUz6OYw3QyUt7WiY2yME+cCiQ=
@@ -139,6 +145,8 @@ github.com/shkh/lastfm-go v0.0.0-20191215035245-89a801c244e0 h1:cgqwZtnR+IQfUYDL
 github.com/shkh/lastfm-go v0.0.0-20191215035245-89a801c244e0/go.mod h1:n3nudMl178cEvD44PaopxH9jhJaQzthSxUzLO5iKMy4=
 github.com/sirupsen/logrus v1.7.0 h1:ShrD1U9pZB12TX0cVy0DtePoCH97K8EtX+mg7ZARUtM=
 github.com/sirupsen/logrus v1.7.0/go.mod h1:yWOB1SBYBC5VeMP7gHvWumXLIWorT60ONWic61uBYv0=
+github.com/sirupsen/logrus v1.8.0 h1:nfhvjKcUMhBMVqbKHJlk5RPrrfYr/NMo3692g0dwfWU=
+github.com/sirupsen/logrus v1.8.0/go.mod h1:4GuYW9TZmE769R5STWrRakJc4UqQ3+QQ95fyz7ENv1A=
 github.com/spaolacci/murmur3 v0.0.0-20180118202830-f09979ecbc72/go.mod h1:JwIasOWyU6f++ZhiEuf87xNszmSA2myDM2Kzu9HwQUA=
 github.com/spaolacci/murmur3 v1.1.0/go.mod h1:JwIasOWyU6f++ZhiEuf87xNszmSA2myDM2Kzu9HwQUA=
 github.com/spf13/afero v1.1.2/go.mod h1:j4pytiNVoe2o6bmDsKpLACNPDBIoEAkihy7loJ1B0CQ=

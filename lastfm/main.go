@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"git.randomchars.net/FreeNitori/FreeNitori/nitori/embedutil"
+	embedutil "git.randomchars.net/FreeNitori/EmbedUtil"
 	"git.randomchars.net/FreeNitori/FreeNitori/nitori/log"
 	"git.randomchars.net/FreeNitori/FreeNitori/nitori/multiplexer"
 	"git.randomchars.net/FreeNitori/FreeNitori/nitori/state"
@@ -128,7 +128,7 @@ func fm(context *multiplexer.Context) {
 		context.SendMessage("This username doesn't exist or does not have any scrobbles.")
 		return
 	}
-	embed := embedutil.NewEmbed(result.Tracks[0].Name, result.Tracks[0].Artist.Name+" | "+result.Tracks[0].Album.Name)
+	embed := embedutil.New(result.Tracks[0].Name, result.Tracks[0].Artist.Name+" | "+result.Tracks[0].Album.Name)
 	embed.SetAuthor(context.Author.Username, context.Author.AvatarURL("128"))
 	embed.SetFooter(fmt.Sprintf("%s has %s scrobbles in total.", result.User, strconv.Itoa(result.Total)))
 	embed.Color = context.Session.State.UserColor(context.Author.ID, context.Create.ChannelID)
