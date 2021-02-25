@@ -6,8 +6,7 @@ import (
 	"fmt"
 	embedutil "git.randomchars.net/FreeNitori/EmbedUtil"
 	"git.randomchars.net/FreeNitori/FreeNitori/nitori/log"
-	"git.randomchars.net/FreeNitori/FreeNitori/nitori/multiplexer"
-	"git.randomchars.net/FreeNitori/FreeNitori/nitori/state"
+	multiplexer "git.randomchars.net/FreeNitori/Multiplexer"
 	"github.com/shkh/lastfm-go/lastfm"
 	"io/ioutil"
 	"os"
@@ -79,7 +78,7 @@ func fm(context *multiplexer.Context) {
 	case 1:
 	case 2:
 		if context.Fields[1] == "unset" {
-			err = resetLastfm(context.Author, context.Guild)
+			err = resetLastfm(context.User, context.Guild)
 			if !context.HandleError(err) {
 				return
 			}
@@ -91,29 +90,29 @@ func fm(context *multiplexer.Context) {
 		switch context.Fields[1] {
 		case "set":
 			if b, _ := regexp.MatchString(`^[a-zA-Z0-9_]+$`, context.Fields[2]); !b || len(context.Fields[2]) < 2 || len(context.Fields[2]) > 15 {
-				context.SendMessage(state.InvalidArgument)
+				context.SendMessage(multiplexer.InvalidArgument)
 				return
 			}
-			err = setLastfm(context.Author, context.Guild, context.Fields[2])
+			err = setLastfm(context.User, context.Guild, context.Fields[2])
 			if !context.HandleError(err) {
 				return
 			}
 			context.SendMessage("Successfully set lastfm username to `" + context.Fields[2] + "`.")
 			return
 		case "unset":
-			err = resetLastfm(context.Author, context.Guild)
+			err = resetLastfm(context.User, context.Guild)
 			if !context.HandleError(err) {
 				return
 			}
 			context.SendMessage("Successfully reset lastfm username.")
 			return
 		default:
-			context.SendMessage(state.InvalidArgument)
+			context.SendMessage(multiplexer.InvalidArgument)
 			return
 		}
 	}
 	if username == "" {
-		username, err = getLastfm(context.Author, context.Guild)
+		username, err = getLastfm(context.User, context.Guild)
 	}
 	if !context.HandleError(err) {
 		return
@@ -129,9 +128,9 @@ func fm(context *multiplexer.Context) {
 		return
 	}
 	embed := embedutil.New(result.Tracks[0].Name, result.Tracks[0].Artist.Name+" | "+result.Tracks[0].Album.Name)
-	embed.SetAuthor(context.Author.Username, context.Author.AvatarURL("128"))
+	embed.SetAuthor(context.User.Username, context.User.AvatarURL("128"))
 	embed.SetFooter(fmt.Sprintf("%s has %s scrobbles in total.", result.User, strconv.Itoa(result.Total)))
-	embed.Color = context.Session.State.UserColor(context.Author.ID, context.Create.ChannelID)
+	embed.Color = context.Session.State.UserColor(context.User.ID, context.Channel.ID)
 	embed.URL = result.Tracks[0].Url
 	if len(result.Tracks[0].Images) == 4 {
 		embed.SetThumbnail(result.Tracks[0].Images[3].Url)

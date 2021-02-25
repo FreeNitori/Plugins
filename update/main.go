@@ -3,8 +3,8 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"git.randomchars.net/FreeNitori/FreeNitori/nitori/multiplexer"
 	"git.randomchars.net/FreeNitori/FreeNitori/nitori/state"
+	multiplexer "git.randomchars.net/FreeNitori/Multiplexer"
 	"os/exec"
 )
 
@@ -18,7 +18,7 @@ func Setup() interface{} {
 		Category:      multiplexer.SystemCategory,
 		Handler: func(context *multiplexer.Context) {
 			if !context.IsAdministrator() {
-				context.SendMessage(state.AdminOnly)
+				context.SendMessage(multiplexer.AdminOnly)
 				return
 			}
 
