@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 	embedutil "git.randomchars.net/FreeNitori/EmbedUtil"
-	"git.randomchars.net/FreeNitori/FreeNitori/nitori/log"
+	log "git.randomchars.net/FreeNitori/Log"
 	multiplexer "git.randomchars.net/FreeNitori/Multiplexer"
 	"github.com/shkh/lastfm-go/lastfm"
 	"io/ioutil"
