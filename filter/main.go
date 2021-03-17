@@ -76,7 +76,6 @@ func Setup() interface{} {
 		return errors.New("no error message defined")
 	}
 	state.Multiplexer.MessageCreate = append(state.Multiplexer.MessageCreate, filterHandler)
-	state.Multiplexer.MessageUpdate = append(state.Multiplexer.MessageUpdate, filterHandler)
 	return nil
 }
 
