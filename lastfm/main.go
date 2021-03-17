@@ -50,7 +50,7 @@ func Setup() interface{} {
 		return nil
 	}
 	log.Infof("%sLoading config file.", prefix)
-	confData, err := ioutil.ReadFile("plugins/lastfm.json")
+	confData, err := ioutil.ReadFile(configPath)
 	if err != nil {
 		return err
 	}
