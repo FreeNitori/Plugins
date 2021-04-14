@@ -5,7 +5,7 @@ static: static-arg build
 
 .PHONY: static-arg
 static-arg:
-	$(eval STATIC_LDFLAGS = -w -extldflags "-static")
+	$(eval STATIC_LDFLAGS = -extldflags "-static")
 
 .PHONY: build
 build:
