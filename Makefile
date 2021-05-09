@@ -1,4 +1,5 @@
 .NOTPARALLEL: build
+SHELL=bash
 
 all: build
 static: static-arg build
