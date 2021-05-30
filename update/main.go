@@ -13,7 +13,7 @@ import (
 func Setup() interface{} {
 	return &multiplexer.Route{
 		Pattern:       "update",
-		AliasPatterns: []string{""},
+		AliasPatterns: []string{},
 		Description:   "",
 		Category:      multiplexer.SystemCategory,
 		Handler: func(context *multiplexer.Context) {
