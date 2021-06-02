@@ -33,7 +33,10 @@ func Setup() interface{} {
 				context.SendMessage(fmt.Sprintf("```\n%s\n```", output.String()))
 				return
 			}
-			context.SendMessage("Finished compiling, attempting restart...")
+			message := context.SendMessage("Finished compiling, attempting restart...")
+			if message != nil {
+				state.Reincarnation = message.ChannelID + "\t" + message.ID + "\t" + "Update complete."
+			}
 			state.ExitCode <- -1
 		},
 	}
