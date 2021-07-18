@@ -11,3 +11,5 @@ require (
 	github.com/dgraph-io/badger/v3 v3.2103.1
 	github.com/shkh/lastfm-go v0.0.0-20191215035245-89a801c244e0
 )
+
+replace git.randomchars.net/freenitori/freenitori/v2 v2.0.0 => ../freenitori
