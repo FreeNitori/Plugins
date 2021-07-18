@@ -2,8 +2,8 @@ package main
 
 import (
 	"crypto/tls"
-	embedutil "git.randomchars.net/FreeNitori/EmbedUtil"
-	multiplexer "git.randomchars.net/FreeNitori/Multiplexer"
+	"git.randomchars.net/freenitori/embedutil"
+	"git.randomchars.net/freenitori/multiplexer"
 	"net/http"
 	"net/http/httptrace"
 	"time"

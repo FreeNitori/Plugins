@@ -3,9 +3,9 @@ package main
 import (
 	"encoding/json"
 	"errors"
-	"git.randomchars.net/FreeNitori/FreeNitori/nitori/state"
-	log "git.randomchars.net/FreeNitori/Log"
-	multiplexer "git.randomchars.net/FreeNitori/Multiplexer"
+	"git.randomchars.net/freenitori/freenitori/v2/nitori/state"
+	"git.randomchars.net/freenitori/log"
+	"git.randomchars.net/freenitori/multiplexer"
 	"io/ioutil"
 	"os"
 	"regexp"

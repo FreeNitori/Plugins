@@ -3,8 +3,8 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"git.randomchars.net/FreeNitori/FreeNitori/nitori/state"
-	multiplexer "git.randomchars.net/FreeNitori/Multiplexer"
+	"git.randomchars.net/freenitori/freenitori/v2/nitori/state"
+	"git.randomchars.net/freenitori/multiplexer"
 	"os/exec"
 )
 
@@ -37,7 +37,7 @@ func Setup() interface{} {
 			if message != nil {
 				state.Reincarnation = message.ChannelID + "\t" + message.ID + "\t" + "Update complete."
 			}
-			state.ExitCode <- -1
+			state.Exit <- -1
 		},
 	}
 }
