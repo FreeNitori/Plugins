@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"git.randomchars.net/freenitori/freenitori/v2/nitori/state"
 	"git.randomchars.net/freenitori/log"
 	"git.randomchars.net/freenitori/multiplexer"
@@ -18,8 +19,9 @@ const configPath = "plugins/disboard.json"
 const prefix = "Disboard: "
 
 var conf = struct {
-	GuildIDs []int `json:"guild_ids"`
-	UserID   int   `json:"user_id"`
+	GuildIDs        []int             `json:"guild_ids"`
+	UserID          int               `json:"user_id"`
+	MessageOverride map[string]string `json:"message_override"`
 }{}
 
 var uid string
@@ -31,12 +33,14 @@ func Setup() interface{} {
 	if _, err := os.Stat(configPath); err != nil {
 		log.Infof("%sNo config file found, generating default.", prefix)
 		conf = struct {
-			GuildIDs []int `json:"guild_ids"`
-			UserID   int   `json:"user_id"`
+			GuildIDs        []int             `json:"guild_ids"`
+			UserID          int               `json:"user_id"`
+			MessageOverride map[string]string `json:"message_override"`
 		}(struct {
-			GuildIDs []int
-			UserID   int
-		}{GuildIDs: []int{}, UserID: 302050872383242240})
+			GuildIDs        []int
+			UserID          int
+			MessageOverride map[string]string
+		}{GuildIDs: []int{}, UserID: 302050872383242240, MessageOverride: map[string]string{}})
 		def, err := json.Marshal(conf)
 		if err != nil {
 			return err
@@ -102,5 +106,10 @@ func disboardCreateHandler(context *multiplexer.Context) {
 func bonkTimer(guild *discordgo.Guild, user *discordgo.User, messageSend func(message string) *discordgo.Message) {
 	log.Infof("User %s bonked in jail %s.", user.ID, guild.ID)
 	time.Sleep(120 * time.Minute)
-	messageSend(user.Mention() + " BONK!")
+
+	message := conf.MessageOverride[guild.ID]
+	if message == "" {
+		message = "%s BONK!"
+	}
+	messageSend(fmt.Sprintf(message, user.Mention()))
 }
