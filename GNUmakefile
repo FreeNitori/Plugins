@@ -1,5 +1,5 @@
 .NOTPARALLEL: build
-SHELL=bash
+SHELL=sh
 
 all: build
 static: static-arg build
@@ -11,4 +11,4 @@ static-arg:
 .PHONY: build
 build:
 	@echo "Building plugins..."
-	@for pl in $(shell sh -c "ls */main.go"); do go build -ldflags="-s -w $(STATIC_LDFLAGS)" --buildmode=plugin -o . $$PWD/$${pl::-7}; done;
+	@for pl in $(shell sh -c "ls */main.go"); do go build -ldflags="-s -w $(STATIC_LDFLAGS)" --buildmode=plugin -o . $$PWD/$${pl%/main.go}; done;

@@ -3,7 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"git.randomchars.net/freenitori/freenitori/v2/nitori/state"
+	"git.randomchars.net/freenitori/freenitori/v2/nitori"
 	"git.randomchars.net/freenitori/multiplexer"
 	"os/exec"
 )
@@ -35,9 +35,9 @@ func Setup() interface{} {
 			}
 			message := context.SendMessage("Finished compiling, attempting restart...")
 			if message != nil {
-				state.Reincarnation = message.ChannelID + "\t" + message.ID + "\t" + "Update complete."
+				nitori.Reincarnation = message.ChannelID + "\t" + message.ID + "\t" + "Update complete."
 			}
-			state.Exit <- -1
+			nitori.Exit <- -1
 		},
 	}
 }

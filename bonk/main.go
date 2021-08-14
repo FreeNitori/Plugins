@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"git.randomchars.net/freenitori/embedutil"
-	"git.randomchars.net/freenitori/freenitori/v2/nitori/state"
+	"git.randomchars.net/freenitori/freenitori/v2/nitori"
 	"git.randomchars.net/freenitori/log"
 	"git.randomchars.net/freenitori/multiplexer"
 	"github.com/bwmarrin/discordgo"
@@ -60,8 +60,8 @@ func Setup() interface{} {
 	} else if len(conf.UserIDs) == 0 {
 		return errors.New("no users defined")
 	}
-	state.Multiplexer.MessageDelete = append(state.Multiplexer.MessageDelete, bonkDeleteHandler)
-	state.Multiplexer.MessageUpdate = append(state.Multiplexer.MessageUpdate, bonkUpdateHandler)
+	nitori.Multiplexer.MessageDelete = append(nitori.Multiplexer.MessageDelete, bonkDeleteHandler)
+	nitori.Multiplexer.MessageUpdate = append(nitori.Multiplexer.MessageUpdate, bonkUpdateHandler)
 	return nil
 }
 

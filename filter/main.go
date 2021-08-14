@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"errors"
-	"git.randomchars.net/freenitori/freenitori/v2/nitori/state"
+	"git.randomchars.net/freenitori/freenitori/v2/nitori"
 	"git.randomchars.net/freenitori/log"
 	"git.randomchars.net/freenitori/multiplexer"
 	"io/ioutil"
@@ -75,7 +75,7 @@ func Setup() interface{} {
 	} else if conf.Warning == "" {
 		return errors.New("no error message defined")
 	}
-	state.Multiplexer.MessageCreate = append(state.Multiplexer.MessageCreate, filterHandler)
+	nitori.Multiplexer.MessageCreate = append(nitori.Multiplexer.MessageCreate, filterHandler)
 	return nil
 }
 

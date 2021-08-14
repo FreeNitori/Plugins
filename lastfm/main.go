@@ -17,7 +17,6 @@ import (
 const configPath = "plugins/lastfm.json"
 const prefix = "LastFM: "
 
-var err error
 var conf struct {
 	APIKey    string `json:"api_key"`
 	APISecret string `json:"api_secret"`
@@ -38,26 +37,25 @@ func Setup() interface{} {
 			APIKey    string
 			APISecret string
 		}{APIKey: "KEY_HERE", APISecret: "SECRET_HERE"})
-		def, err := json.Marshal(conf)
-		if err != nil {
+
+		var def []byte
+		if def, err = json.Marshal(conf); err != nil {
 			return err
 		}
-		err = ioutil.WriteFile(configPath, def, 0600)
-		if err != nil {
+
+		if err = ioutil.WriteFile(configPath, def, 0600); err != nil {
 			return err
 		}
 		log.Warnf("%sDefault config file generated, edit before next startup to enable LastFM.", prefix)
 		return nil
 	}
-	log.Infof("%sLoading config file.", prefix)
-	confData, err := ioutil.ReadFile(configPath)
-	if err != nil {
+	log.Infof("%sLoading configuration.", prefix)
+	if confData, err := ioutil.ReadFile(configPath); err != nil {
 		return err
-	}
-	log.Infof("%sParsing config file.", prefix)
-	err = json.Unmarshal(confData, &conf)
-	if err != nil {
-		return err
+	} else {
+		if err = json.Unmarshal(confData, &conf); err != nil {
+			return err
+		}
 	}
 	if conf.APIKey == "KEY_HERE" || conf.APISecret == "SECRET_HERE" {
 		return errors.New("default configuration file was not edited")
@@ -78,8 +76,7 @@ func fm(context *multiplexer.Context) {
 	case 1:
 	case 2:
 		if context.Fields[1] == "unset" {
-			err = resetLastfm(context.User, context.Guild)
-			if !context.HandleError(err) {
+			if err := resetLastfm(context.User, context.Guild); !context.HandleError(err) {
 				return
 			}
 			context.SendMessage("Successfully reset lastfm username.")
@@ -93,15 +90,13 @@ func fm(context *multiplexer.Context) {
 				context.SendMessage(multiplexer.InvalidArgument)
 				return
 			}
-			err = setLastfm(context.User, context.Guild, context.Fields[2])
-			if !context.HandleError(err) {
+			if err := setLastfm(context.User, context.Guild, context.Fields[2]); !context.HandleError(err) {
 				return
 			}
 			context.SendMessage("Successfully set lastfm username to `" + context.Fields[2] + "`.")
 			return
 		case "unset":
-			err = resetLastfm(context.User, context.Guild)
-			if !context.HandleError(err) {
+			if err := resetLastfm(context.User, context.Guild); !context.HandleError(err) {
 				return
 			}
 			context.SendMessage("Successfully reset lastfm username.")
@@ -112,10 +107,11 @@ func fm(context *multiplexer.Context) {
 		}
 	}
 	if username == "" {
-		username, err = getLastfm(context.User, context.Guild)
-	}
-	if !context.HandleError(err) {
-		return
+		if u, err := getLastfm(context.User, context.Guild); !context.HandleError(err) {
+			return
+		} else {
+			username = u
+		}
 	}
 	p := lastfm.P{"user": username, "limit": 1, "extended": 0}
 	result, err := LastFM.User.GetRecentTracks(p)

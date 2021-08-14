@@ -1,7 +1,7 @@
 package main
 
 import (
-	"git.randomchars.net/freenitori/freenitori/v2/nitori/database"
+	"git.randomchars.net/freenitori/freenitori/v2/database"
 	"github.com/bwmarrin/discordgo"
 	"github.com/dgraph-io/badger/v3"
 )
