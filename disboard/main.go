@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"git.randomchars.net/freenitori/freenitori/v2/nitori/state"
+	"git.randomchars.net/freenitori/freenitori/v2/nitori"
 	"git.randomchars.net/freenitori/log"
 	"git.randomchars.net/freenitori/multiplexer"
 	"github.com/bwmarrin/discordgo"
@@ -74,7 +74,7 @@ func Setup() interface{} {
 		gid[strconv.Itoa(id)] = true
 	}
 
-	state.Multiplexer.MessageCreate = append(state.Multiplexer.MessageCreate, disboardCreateHandler)
+	nitori.Multiplexer.MessageCreate = append(nitori.Multiplexer.MessageCreate, disboardCreateHandler)
 	return nil
 }
 

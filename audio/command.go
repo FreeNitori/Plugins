@@ -5,7 +5,6 @@ import (
 	"git.randomchars.net/freenitori/freenitori/v2/nitori"
 	"git.randomchars.net/freenitori/multiplexer"
 	"git.randomchars.net/freenitori/plugins/audio/snd"
-	"github.com/bwmarrin/discordgo"
 )
 
 func init() {
@@ -26,16 +25,18 @@ func init() {
 	})
 }
 
-var a chan bool
+var s *snd.AudioSession
 
 func play(context *multiplexer.Context) {
 	path := "/usr/home/rand/bin/snd/Thousand Leaves/2013.05.25 [TIBA013] BLACK CLOAK SKELETON [Reitaisai 10]/08. Faithful Secret (Instrumental).flac"
 
-	if a != nil {
+	if s != nil {
 		return
 	}
 
-	var connection *discordgo.VoiceConnection
+	s = &snd.AudioSession{TextChannel: context.Channel}
+	defer func() { s = nil }()
+
 	if c, err := context.Session.ChannelVoiceJoin("713624993979695125", "762652462422687744", false, true); !context.HandleError(err) {
 		return
 	} else {
@@ -44,23 +45,26 @@ func play(context *multiplexer.Context) {
 				return
 			}
 		}()
-		connection = c
+		s.VoiceConnection = c
 	}
 
-	context.SendMessage(fmt.Sprintf("Successfully connected to channel %s.", connection.ChannelID))
+	context.SendMessage(fmt.Sprintf("Successfully connected to channel %s.", s.ChannelID))
 
-	a = make(chan bool)
-	defer func() { a = nil }()
-	if !context.HandleError(snd.PlayOnConnection(connection, path, a)) {
+	if !context.HandleError(s.Play(path)) {
 		return
 	}
 }
 
 func abort(context *multiplexer.Context) {
-	if a == nil {
+	if s == nil {
 		return
 	}
 
-	a <- true
-	context.SendMessage("Playback aborted.")
+	if s.Abort() {
+		context.SendMessage("Playback aborted.")
+	} else {
+		context.SendMessage("Uhhuh. Abort received with no abort channel.")
+		context.SendMessage("Do you have a resource leak?")
+		context.SendMessage("Dazed and confused, but trying to continue.")
+	}
 }

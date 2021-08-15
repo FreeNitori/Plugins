@@ -38,6 +38,8 @@ git.randomchars.net/freenitori/log v1.0.0 h1:hU99jGk940I1O5OcaTfnXOpN8ozXiarxhu6
 git.randomchars.net/freenitori/log v1.0.0/go.mod h1:YZFRZgVWDIrbyDGHyDeRlIRWeq0DXamXONxIt12eq2Q=
 git.randomchars.net/freenitori/multiplexer v1.0.12 h1:XsMMSeeaeBtavlsMl7M6ZrW00wa2+zsx/w5gYWR5Qh0=
 git.randomchars.net/freenitori/multiplexer v1.0.12/go.mod h1:Bx9vu2RXDtBrsKBslrhrc8v3IJl5Dna7I/rsHF586w0=
+git.randomchars.net/freenitori/multiplexer v1.0.14 h1:j6r0dhI+VBDDog7Uc8a492vSSdu/BfiivweTF1sAFK8=
+git.randomchars.net/freenitori/multiplexer v1.0.14/go.mod h1:Bx9vu2RXDtBrsKBslrhrc8v3IJl5Dna7I/rsHF586w0=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/OneOfOne/xxhash v1.2.2 h1:KMrpdQIwFcEqXDklaen+P1axHaj9BSKzvpUUfnHldSE=

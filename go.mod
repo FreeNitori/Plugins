@@ -6,7 +6,7 @@ require (
 	git.randomchars.net/freenitori/embedutil v1.0.2
 	git.randomchars.net/freenitori/freenitori/v2 v2.0.0
 	git.randomchars.net/freenitori/log v1.0.0
-	git.randomchars.net/freenitori/multiplexer v1.0.12
+	git.randomchars.net/freenitori/multiplexer v1.0.14
 	github.com/bwmarrin/discordgo v0.23.2
 	github.com/dgraph-io/badger/v3 v3.2103.1
 	github.com/shkh/lastfm-go v0.0.0-20191215035245-89a801c244e0
